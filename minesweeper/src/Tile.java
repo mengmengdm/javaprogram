@@ -5,15 +5,17 @@ abstract class Tile {
     //status use to check if the tile has been clicked, and initial means unclicked
     private tile_status status;
     private boolean flag;
-    //private Shape shape;  shape is for future ui designs
-    public Tile() {
+    public Tile()
+    {
         status = tile_status.initial;
     }
 
-    public void setFlag() {
+    public void setFlag()
+    {
         flag = true;
     }
-    public void releaseFlag(){
+    public void releaseFlag()
+    {
         flag = false;
     }
     public void leftClick(){
