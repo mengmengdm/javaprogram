@@ -4,42 +4,80 @@ public class Map {
     private int row;
     private int column;
     private int mineNr;
-    public int aroundNr;
     public Map(int row, int column, int mineNr)
     {
         this.row= row;
         this.column = column;
         this.mineNr = mineNr;
-        this.gameMap =  new Tile[row][column];
+        this.gameMap =  new Tile[row+1][column+1];
+        initialMap();
     }
     private void initialMap()
     {
-        for(int i = 0; i < mineNr+1; i++)
+        Random random = new Random();
+        //putting mines, we assusme that the real map is from (1,1) to (column, row)
+        for(int i = 1; i <= mineNr; i++)
         {
-            Random random = new Random();
-            int randomX = random.nextInt(column+1);
-            int randomY = random.nextInt(row+1);
+            //generate random numbers from 1 to column/row
+            int randomX = random.nextInt(column)+1;
+            int randomY = random.nextInt(row)+1;
             gameMap[randomX][randomY] = new MineBox();
+            System.out.println("mb"+randomX);
         }
-        for(int i = 0; i<row; i++)
+        for(int i = 0; i < row + 1; i++)
         {
-            for(int j = 0; j<column; j++)
+            for(int j = 0; j < column + 1; j++)
             {
                 if(gameMap[i][j] == null)
                 {
                     gameMap[i][j] = new EmptyBox();
+                    System.out.println("eb");
                 }
             }
         }
     }
 
-    public int getAroundNR()
+    public int getAroundNR(int x,int y)
     {
+        int aroundNr = 0;
+        if(x == 0 || y == 0 || x == column || y == row )
+        {
+            System.out.println("plese enter the right number between (0,0) and"+"("+column+","+row+")");
+        }
+        else
+        {
+            for (int i = x-1; i <= x+1; i++)
+            {
+                for (int j = y-1; j <= y+1; j++)
+                {
+                    if(i == x && j == y )
+                    {
+                        continue;
+                    }
+                    if(gameMap[i][j] instanceof MineBox)
+                    {
+                        aroundNr++;
+                    }
+                }
+            }
 
+        }
         return aroundNr;
     }
     public boolean openTile()
     {
         return false;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public Tile[][] getGameMap() {
+        return gameMap;
     }
 }

@@ -19,4 +19,9 @@ public class Game {
     {
 
     }
+
+    public static void main(String[] args) {
+        Map gameMap = new Map(5,5,1);
+        Visulization visulization = new Visulization(gameMap);
+    }
 }
