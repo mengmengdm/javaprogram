@@ -21,7 +21,7 @@ public class Game {
     }
 
     public static void main(String[] args) {
-        Map gameMap = new Map(5,5,1);
+        Map gameMap = new Map(8,8,5);
         Visulization visulization = new Visulization(gameMap);
     }
 }

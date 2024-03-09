@@ -9,7 +9,7 @@ public class Map {
         this.row= row;
         this.column = column;
         this.mineNr = mineNr;
-        this.gameMap =  new Tile[row+1][column+1];
+        this.gameMap =  new Tile[row+2][column+2];
         initialMap();
     }
     private void initialMap()
@@ -22,7 +22,8 @@ public class Map {
             int randomX = random.nextInt(column)+1;
             int randomY = random.nextInt(row)+1;
             gameMap[randomX][randomY] = new MineBox();
-            System.out.println("mb"+randomX);
+            //test code showing where the mines are
+            System.out.println("the position of mine "+ i + " is ("+randomX+","+randomY+")");
         }
         for(int i = 0; i < row + 1; i++)
         {
@@ -31,7 +32,7 @@ public class Map {
                 if(gameMap[i][j] == null)
                 {
                     gameMap[i][j] = new EmptyBox();
-                    System.out.println("eb");
+                    //System.out.println("eb");
                 }
             }
         }
@@ -40,9 +41,9 @@ public class Map {
     public int getAroundNR(int x,int y)
     {
         int aroundNr = 0;
-        if(x == 0 || y == 0 || x == column || y == row )
+        if(x == 0 || y == 0 || x == column+1 || y == row+1 )
         {
-            System.out.println("plese enter the right number between (0,0) and"+"("+column+","+row+")");
+            //System.out.println("plese enter the right number between (0,0) and"+"("+column+","+row+")");
         }
         else
         {
