@@ -3,8 +3,5 @@ public class MineBox extends Tile{
     {
         super();
     }
-    @Override
-    public void leftClick() {
 
-    }
 }

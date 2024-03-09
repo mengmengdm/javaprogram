@@ -32,6 +32,14 @@ public class Map {
                 if(gameMap[i][j] == null)
                 {
                     gameMap[i][j] = new EmptyBox();
+                    if(getAroundNR(i,j) ==0)
+                    {
+                        gameMap[i][j].setEmptyNearStatus();
+                    }
+                    else
+                    {
+                        gameMap[i][j].setNearStatus();
+                    }
                     //System.out.println("eb");
                 }
             }
@@ -65,11 +73,39 @@ public class Map {
         }
         return aroundNr;
     }
-    public boolean openTile()
+    public boolean openTile(int x, int y)
     {
-        return false;
+        boolean safeCheck = true;
+        if(gameMap[x][y] instanceof MineBox)
+        {
+           safeCheck  = false;
+        }
+        else {
+            openEmpties(x,y);
+        }
+        return safeCheck;
     }
-
+    public void openEmpties(int x, int y)
+    {
+        if(x == 0 || y == 0 || x == column+1 || y == row+1){
+            return;
+        }
+        if(gameMap[x][y].getEmptyStatus() == EmptyBox.empty_enum.near)
+        {
+            gameMap[x][y] = new NumberBox();
+            gameMap[x][y].open();
+            return;
+        }
+        gameMap[x][y].open();
+        openEmpties(x-1,y-1);
+        openEmpties(x-1,y);
+        openEmpties(x-1,y+1);
+        openEmpties(x,y-1);
+        openEmpties(x,y+1);
+        openEmpties(x+1,y-1);
+        openEmpties(x+1,y);
+        openEmpties(x+1,y+1);
+    }
     public int getColumn() {
         return column;
     }

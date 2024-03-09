@@ -18,7 +18,21 @@ abstract class Tile {
     {
         flag = false;
     }
-    public void leftClick(){
+    public void open(){
+        status = tile_status.opened;
+    }
 
+    public tile_status getStatus() {
+        return status;
+    }
+
+    public void setEmptyNearStatus() {
+
+    }
+    public void setNearStatus(){
+
+    }
+    public EmptyBox.empty_enum getEmptyStatus() {
+        return null;
     }
 }
