@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Visulization {
     private int row;
     private int column;
@@ -15,14 +16,26 @@ public class Visulization {
 
     public void printMap()
     {
+        System.out.print("  ");
         for (int i = 1; i <= column; i++)
         {
+            System.out.print(i+" ");
+        }
+        System.out.println();
+        for (int i = 1; i <= column; i++)
+        {
+            System.out.print(i + " ");
             for (int j = 1; j <= row; j++)
             {
                 printTile(j,i);
             }
             System.out.println();
         }
+        for (int i = 1; i <= column; i++)
+        {
+            System.out.print("--");
+        }
+        System.out.println();
     }
     public void printTile(int x, int y)
     {
@@ -46,6 +59,10 @@ public class Visulization {
         boolean safeCheck = map.openTile(x,y);
         printMap();
         return safeCheck;
+    }
+    public void printInstruction()
+    {
+        System.out.println("please enter open(x,y), flag(x,y) or unflag(x,y) to control");
     }
     public Map getMap() {
         return map;

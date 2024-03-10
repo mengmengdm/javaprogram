@@ -87,7 +87,7 @@ public class Map {
     }
     public void openEmpties(int x, int y)
     {
-        if(x == 0 || y == 0 || x == column+1 || y == row+1){
+        if(x == 0 || y == 0 || x == column+1 || y == row+1 ||gameMap[x][y].getStatus()== Tile.tile_status.opened){
             return;
         }
         if(gameMap[x][y].getEmptyStatus() == EmptyBox.empty_enum.near)
