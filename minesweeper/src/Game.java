@@ -69,10 +69,10 @@ public class Game {
                 visulization.openTile(x,y);
             }
             if (command.equals("flag")){
-
+                visulization.flagTile(x,y);
             }
             if (command.equals("unflag")){
-
+                visulization.unflagTile(x,y);
             }
         }
         else {

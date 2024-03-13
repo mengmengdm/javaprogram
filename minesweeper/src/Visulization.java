@@ -52,13 +52,39 @@ public class Visulization {
         }
         if (gameMap[x][y].getStatus() == Tile.tile_status.initial)
         {
-            System.out.print("\u25A0"+" ");
+            if (gameMap[x][y].getFlag())
+            {
+                System.out.print("\u25B3"+" ");
+            }
+            else
+            {
+                System.out.print("\u25A0"+" ");
+            }
         }
     }
     public boolean openTile(int x, int y){
         boolean safeCheck = map.openTile(x,y);
         printMap();
         return safeCheck;
+    }
+    public void flagTile(int x, int y)
+    {
+        Tile tile = gameMap[x][y];
+        if(tile.getStatus() == Tile.tile_status.initial)
+        {
+
+            tile.setFlag();
+            printMap();
+        }
+    }
+    public void unflagTile(int x, int y)
+    {
+        Tile tile = gameMap[x][y];
+        if(tile.getFlag())
+        {
+            tile.releaseFlag();
+            printMap();
+        }
     }
     public void printInstruction()
     {
