@@ -19,11 +19,18 @@ abstract class Tile {
         flag = false;
     }
     public void open(){
-        status = tile_status.opened;
+        if(!flag)
+        {
+            status = tile_status.opened;
+        }
     }
 
     public tile_status getStatus() {
         return status;
+    }
+    public boolean getFlag()
+    {
+        return flag;
     }
 
     public void setEmptyNearStatus() {
